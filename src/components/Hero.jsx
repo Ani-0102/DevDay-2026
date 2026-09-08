@@ -1,18 +1,21 @@
-import React from 'react'
-
-const Hero = () => {
+function Hero() {
   return (
-    <div className='max-w-[1640px] mx-auto p-4'>
-      <div className='max-h-[500px] relative'>
-        {/* Overlay */}
-        <div className='absolute w-full h-full text-gray-200 max-h-[500px] bg-black/40 flex flex-col justify-center'>
-          <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'>The <span className='text-orange-500'>Best</span></h1>
-          <h1 className='px-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'> <span className='text-orange-500'>Foods</span> Delivered</h1>
-        </div>
-        <img className='w-full max-h-[500px] object-cover' src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="/" />
-      </div>
+    <div className="mx-auto max-w-5xl px-6 py-20">
+      <p className="text-sm font-semibold uppercase tracking-[0.15em] text-orange-600">
+        HackUTD DevDay 2026
+      </p>
+      <h1 className="mt-4 text-5xl font-bold tracking-tight text-slate-950">
+        Find your next favorite recipe.
+      </h1>
+      <p className="mt-6 text-lg leading-8 text-slate-600">
+        Browse our collection of delicious recipes and discover new flavors to try in your kitchen.
+      </p>
+      <a href="#recipes" className="mt-8 inline-block rounded-lg bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+      >
+        Browse recipes
+      </a>
     </div>
-  )
+  );
 }
 
-export default Hero
+export default Hero;

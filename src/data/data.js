@@ -1,1 +1,0 @@
-// Data is now fetched live from TheMealDB API (https://www.themealdb.com)
