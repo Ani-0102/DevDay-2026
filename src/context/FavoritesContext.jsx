@@ -1,10 +1,37 @@
-import { createContext, useContext, useState } from "react";
-import { getUserId, toggleFavoriteRequest,} from "../services/api";
+import { createContext, useContext, useEffect, useState } from "react";
+import {
+  getFavoritesRequest,
+  getUserId,
+  toggleFavoriteRequest,
+} from "../services/api";
 
 const FavoritesContext = createContext(null);
 
 export function FavoritesProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadFavorites() {
+      try {
+        const userId = getUserId();
+        const savedFavorites = await getFavoritesRequest(userId);
+
+        if (!cancelled) {
+          setFavorites(savedFavorites);
+        }
+      } catch (error) {
+        console.error("Could not load favorites:", error);
+      }
+    }
+
+    loadFavorites();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   async function toggleFavorite(recipe) {
     try {

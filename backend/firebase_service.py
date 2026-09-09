@@ -16,16 +16,22 @@ def get_firestore_db():
     return firestore.client()
 
 
+def get_favorites(user_id: str) -> list:
+    db = get_firestore_db()
+    favorite_doc = db.collection("favorites").document(user_id).get()
+
+    if not favorite_doc.exists:
+        return []
+
+    favorite_data = favorite_doc.to_dict() or {}
+    return favorite_data.get("items", [])
+
+
 # code for toggling user favorites: 
 def toggle_favorite(user_id: str, food: dict) -> list:
-    #code here to grab existing favorites for the user
     db = get_firestore_db()
     favorite_ref = db.collection("favorites").document(user_id)
-    favorite_doc = favorite_ref.get()
-
-    favorites = []
-    if favorite_doc.exists:
-        favorites = favorite_doc.to_dict().get("items", []) if favorite_doc.to_dict() else []
+    favorites = get_favorites(user_id)
 
     # Code here to add the food to favorites or remove it if already favorited
     food_id = food.get("id")

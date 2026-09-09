@@ -9,6 +9,17 @@ export function getUserId() {
   return userId;
 }
 
+export async function getFavoritesRequest(userId) {
+  const response = await fetch(`${API_URL}/favorites/${encodeURIComponent(userId)}`);
+
+  if (!response.ok) {
+    throw new Error("Failed to load favorites");
+  }
+
+  const data = await response.json();
+  return data.favorites;
+}
+
 export async function toggleFavoriteRequest(userId, recipe) {
   const response = await fetch(
     `${API_URL}/favorites/toggle`,
