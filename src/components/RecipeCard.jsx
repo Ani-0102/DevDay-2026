@@ -20,14 +20,17 @@ function RecipeCard({ recipe, onSelectRecipe}) {
         <span>{recipe.cookTime} min</span>
         <span> · {recipe.difficulty}</span>
       </div>
-      <button onClick={() => onSelectRecipe(recipe)}
-      className="rounded-lg bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
-        View Recipe
-      </button>
-      <button onClick={() => toggleFavorite(recipe)} className="text-2xl transition hover:scale-110" aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-      >
-        {isFavorite ? "♥" : "♡"}
-      </button>
+      <div className="flex items-center gap-3"> 
+        <button onClick={() => onSelectRecipe(recipe)} 
+        className="inline-flex items-center justify-center whitespace-nowrap rounded-lg bg-slate-950 px-15 py-2 text-sm font-semibold text-white hover:bg-slate-800" > 
+          View Recipe 
+        </button> 
+        <button onClick={() => toggleFavorite(recipe)} 
+        className="text-4xl leading-none transition hover:scale-110" 
+        aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}> 
+          {isFavorite ? "♥" : "♡"} 
+        </button> 
+      </div>
     </article>
   );
 }

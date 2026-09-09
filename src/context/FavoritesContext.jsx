@@ -44,7 +44,7 @@ export function FavoritesProvider({ children }) {
     } catch (error) {
         console.error("Could not update favorites:", error);
     }
-  }
+  } 
 
   return (
     <FavoritesContext.Provider value={{ favorites, setFavorites, toggleFavorite }}>
