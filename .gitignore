@@ -1,6 +1,7 @@
 node_modules
 dist
-.env
+# add .env in gitignore here:
+
 backend/.env
 backend/firebase-service-account.json
 # dependencies
